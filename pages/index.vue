@@ -1,9 +1,7 @@
 <template>
   <div class="app">
     <main>
-      <div>
-        <input type="text">
-      </div>
+      <search-input :search-keyword="searchKeyword"></search-input>
       <ul>
         <li v-for="product in products" :key="product.id" class="item flex" v-on:click="moveToDetailPage(product.id)">
           <img :src="product.imageUrl" :alt="product.name" class="product-image">
@@ -17,8 +15,15 @@
 
 <script>
 import axios from 'axios';
+import SearchInput from '@/components/SearchInput.vue'; // @경로는 nuxt내에 설정되어있음
 
 export default {
+  components: { SearchInput },
+  data() {
+    return {
+      searchKeyword: '',
+    }
+  },
 	async asyncData({ params, $http }) {
     const response = await axios.get(`http://localhost:3000/products`);
 		const products = response.data.map(item => ({ // map() 배열을 변형함 
