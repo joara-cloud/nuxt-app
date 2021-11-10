@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios';
-import SearchInput from '@/components/SearchInput.vue';
+import SearchInput from '@/components/SearchInput.vue'; // @경로는 nuxt내에 설정되어있음
 import {fetchProductsByKeyword} from '@/api/index.js'; // @경로는 nuxt내에 설정되어있음
 
 export default {

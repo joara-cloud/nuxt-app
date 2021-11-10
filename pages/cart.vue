@@ -22,9 +22,7 @@
 
 <script>
 export default {
-  asyncData({store}) {
-    store.dispatch('fetchCartItems')
-  }
+
 }
 </script>
 
