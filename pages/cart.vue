@@ -15,7 +15,7 @@
       </ul>
     </div>
     <div class="extra-panel">
-      <button>구매하기</button>
+      <button>구매하기123</button>
     </div>
   </div>
 </template>
