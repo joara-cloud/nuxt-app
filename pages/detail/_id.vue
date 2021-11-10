@@ -11,14 +11,14 @@
       <div class="side-panel">
         <p class="name">{{ product.name }}</p>
         <p class="price">{{ product.price }}</p>
-        <button type="button" @click="addToCart">Add to Cart</button>
+        <button type="button" @click="addToCart">장바구니 담기</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {fetchProductById} from '@/api/index.js'
+import {fetchProductById, createCartItem} from '@/api/index.js'
 
 export default {
 	async asyncData({ params }) {
@@ -27,7 +27,14 @@ export default {
 		return {product}
 	},
   methods: {
-    addToCart() {
+    async addToCart() {
+      try {
+        const response = await createCartItem(this.product);
+        console.log(response);
+      }catch {
+        alert('이미 담겨있는 상품입니다.')
+        return;
+      }
       this.$store.commit('addCartItem', this.product)
       this.$router.push('/cart') // promise를 반환하기 떄문에 catch로 처리가능
     }

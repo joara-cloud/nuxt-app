@@ -16,5 +16,10 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  // off, warn, error
+  rules: {
+    "prettier/prettier": ['error', {
+      // semi: true
+    }]
+  }
 }
