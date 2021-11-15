@@ -1,23 +1,68 @@
 <template>
-  <div class="app">
+  <div id="app" class="v-application">
     <main class="main">
+
+        <!-- <v-layout>
+          <v-flex xs12 sm6 offset-sm3>
+            <v-card>
+              <v-container grid-list-md fluid>
+                <v-layout row wrap>
+                  <v-flex
+                    v-for="n in 9"
+                    :key="n"
+                    xs4
+                    lg6
+                  >
+                    <v-card flat tile>
+                      <v-img
+                        :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
+                        height="150px"
+                      ></v-img>
+                    </v-card>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card>
+          </v-flex>
+        </v-layout> -->
+
       <!-- <search-input 
         :search-keyword="searchKeyword"
         @input="updateSearchKeyword"
       ></search-input> -->
       <!-- @input은 SearchInput컴포넌트의 'input'이벤트를 받은것임 => 이렇게되면 props로 데이터도 내려주고 아래에서 데이터도 받기 때문에 컴포넌트끼리 데이터를 동기화 -->
       <!-- 위 구문을 v-model로 엮어줄수가 있음 (v-model은 input에만 쓸수있는게 아니라 component에도 쓸수있음) -->
-      <search-input 
-        v-model="searchKeyword"
-        @search="searchProducts"
-      ></search-input>
-      <ul class="prd_list">
-        <li v-for="product in products" :key="product.id" class="item flex" v-on:click="moveToDetailPage(product.id)">
-          <img :src="product.imageUrl" :alt="product.name" class="product-image">
-          <p>{{product.name}}</p>
-          <span>${{product.price}}</span>
-        </li>
-      </ul>
+        <v-container wrap class="search_container">
+            <v-flex d-flex justify-end fluid>
+              <search-input 
+                v-model="searchKeyword"
+                @search="searchProducts"
+              ></search-input>
+            </v-flex>
+        </v-container>
+      
+      <v-container class="prd_list" grid-list-lg>
+        <v-layout wrap>
+          <v-flex v-for="product in products" :key="product.id" class="item flex" v-on:click="moveToDetailPage(product.id)" :height="height" lg4 md4 sm4 xs6 >
+            <v-card>
+              <v-img
+                height="250"
+                :src="product.imageUrl" 
+                :alt="product.name" 
+              ></v-img>
+
+              <v-card-title>{{ product.name }}</v-card-title>
+
+              <v-card-text>
+                <div class="my-4 text-subtitle-1">
+                  ${{ product.price }}
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+
       <a href="" class="cart" @click="addToCart">cart</a>
     </main>
   </div>
@@ -36,6 +81,7 @@ export default {
   data() {
     return {
       searchKeyword: '',
+      // breakpoint: ''
     }
   },
 	async asyncData({ params, $http }) {
@@ -45,6 +91,9 @@ export default {
 				imageUrl: `${item.imageUrl}?random=${Math.random()}`
 		}))
     return { products } // products는 data 속성에 정의 되어있지 않지만 data 속성으로 정의될것이다
+  },
+  created() {
+    // this.breakpoint = this.$vuetify.breakpoint.name
   },
   methods: {
     moveToDetailPage(id) {
@@ -61,16 +110,24 @@ export default {
       this.$router.push('/cart') // promise를 반환하기 떄문에 catch로 처리가능
     }
   },
+  // computed: {
+  //   breakpoint:function() {
+  //     console.log('computed: ', this.$vuetify.breakpoint.name);
+  //   }
+  // },
   computed: {
-  } 
+    height () {
+      console.log('sdfsdf ', this.$vuetify.breakpoint.name);
+    },
+  },
 }
 </script>
 
 
 <style scoped>
 li {list-style:none;}
-.flex {display: flex;justify-content: center;}
-.item {display: inline-block;width: 400px;height: 470px;text-align: center; cursor: pointer;}
+/* .flex {display: flex;justify-content: center;} */
+.item {cursor: pointer;}
 .item p {margin:0;padding:0}
 .item span {margin:0;padding:0}
 .product-image {width:100%;}
@@ -78,7 +135,7 @@ li {list-style:none;}
 .cart-wrapper {position: sticky;float: right;bottom: 50px;right: 50px;}
 .cart-wrapper .btn {display: inline-block;height: 40px;font-size: 1rem;font-weight: 500;}
 .main {max-width:1200px;width:100%;margin:0 auto}
-.prd_list > li {width:30%;margin-left:5%}
-.prd_list > li:nth-child(3n+1) {margin-left:0}
+/* .prd_list > li {width:30%;margin-left:5%} */
+/* .prd_list > li:nth-child(3n+1) {margin-left:0} */
 .cart {display:flex;position:fixed;right:50px;bottom:30px;width:70px;height:70px;border-radius:50%;justify-content:center;align-items:center;background-color:#00c58e;color:#fff}
 </style>
