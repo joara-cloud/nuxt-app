@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<v-app>
 		<!-- <header> -->
 			<!-- <h1>{{$route.name}} 페이지</h1>
 			<h1>
@@ -10,10 +10,19 @@
 			<nuxt-link to="/product">상품 페이지</nuxt-link>	 -->
 		<!-- </header> -->
 		<header class="title">
-			<nuxt-link class="logo" to="/">Nuxt Shopping</nuxt-link>
+			<v-banner 
+				class="title_banner"
+				single-line
+				sticky
+			>
+				<nuxt-link class="logo" to="/">
+					<!-- NUXT SHOPPING -->
+					<img src="https://cdn.vuetifyjs.com/docs/images/logos/vuetify-logo-light-text.svg" alt="logo" class="logo_img">
+				</nuxt-link>
+			</v-banner>
 		</header>
 		<Nuxt />
-	</div>
+	</v-app>
 </template>
 
 <script>
@@ -25,15 +34,16 @@ export default {
 <style scoped>
 header {
   height: 60px;
-  display: flex;
-  align-items: center;
   padding: 0 0.5rem;
 }
 .logo {
+	display:inline-block;text-decoration:none;
   font-weight: 900;
 	text-transform:uppercase;
 	font-size:30px;letter-spacing:-1px;
 }
+.logo_img {width:140px}
+.title_banner {font-size:30px;color:#00c58e;text-align:center;}
 .logo:visited {
   color: inherit;
 }

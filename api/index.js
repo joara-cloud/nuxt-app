@@ -1,14 +1,15 @@
 import axios from 'axios';
 
 const products = axios.create({
-	baseURL: 'http://localhost:3000/products/'
+	baseURL: 'http://localhost:3000/products'
 })
-const carts = axios.create({
-	baseURL: 'http://localhost:3000/carts/'
+const cart = axios.create({
+	baseURL: 'http://localhost:3000/cart'
 })
 
+// products
 function fetchProductById(id) {
-	return products.get(`${id}`) // get은 baseURL을 기본적으로 깔고감. 그 이후 url만 적어주면 됨
+	return products.get(`/${id}`) // get은 baseURL을 기본적으로 깔고감. 그 이후 url만 적어주면 됨
 }
 
 function fetchProductsByKeyword(keyword) {
@@ -22,11 +23,12 @@ function fetchProductsByKeyword(keyword) {
 
 // cart
 function fetchCartItems() {
-	return carts.get('')
+	const cartItems = cart.get('')
+	return cartItems;
 }
 
 function createCartItem(cartItem) {
-	return carts.post(``, cartItem) // 두번째 값은 넘겨줄 값
+	return cart.post(``, cartItem) // 두번째 값은 넘겨줄 값
 }
 
 export { fetchProductById, fetchProductsByKeyword, createCartItem, fetchCartItems }

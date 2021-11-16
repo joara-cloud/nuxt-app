@@ -9,13 +9,19 @@
       <!-- 양방향 데이터로 적용했을 때 v-model로 받으려면 value로 받아야함!!!! -->
       <!-- <button type="button" @click="$emit('search')" class="btn">Search</button> -->
 
-      <form action="" class="search_wrap">
-        <v-text-field 
+      <div action="" class="search_wrap">
+        <input type="text" 
+          class="search-input"
+          placeholder="검색할 상품을 입력해주세요."
+          :value="value" 
+          @input="$emit('input', $event.target.value)"
+        /> 
+        <!-- <v-text-field 
           label="검색할 상품을 입력해주세요."
           :value="value" 
           @input="$emit('input', $event.target.value)"
           class="search-input"
-        ></v-text-field>
+        ></v-text-field> -->
         <v-btn
           rounded
           color="primary"
@@ -25,7 +31,7 @@
         >
           Search
         </v-btn>
-      </form>
+      </div>
   </div>
 </template>
 
@@ -45,11 +51,10 @@ export default {
 //   height: 40px;
 //   margin: 1rem 0;justify-content:flex-end;
 // }
-.input-wrapper {width:300px}
 .search-input {
-  width: 200px;
+  width: 210px;
   font-size: 1.2rem;letter-spacing:-1px;
-  font-weight: 500;
+  font-weight: 500;outline:none;font-size:14px;border-bottom:1px solid #555;padding:8px 5px;
 }
 .btn {
   font-size: 1.2rem;

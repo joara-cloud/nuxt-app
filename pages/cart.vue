@@ -14,14 +14,22 @@
         </li>
       </ul>
     </div>
-    <div class="extra-panel">
-      <button>구매하기123</button>
-    </div>
+    <v-btn color="primary">
+      구매하기
+    </v-btn>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      cartItems: []
+    }
+  },
+  created() {
+    this.cartItems = this.$store.state.cartItems;
+  },
   asyncData({store}) {
     store.dispatch('fetchCartItems')
   }
