@@ -9,6 +9,8 @@
 			<nuxt-link to="/main">메인 페이지</nuxt-link>	
 			<nuxt-link to="/product">상품 페이지</nuxt-link>	 -->
 		<!-- </header> -->
+
+		
 		<header class="title">
 			<nuxt-link class="logo" to="/">Nuxt Shopping</nuxt-link>
 		</header>
