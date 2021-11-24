@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// baseURL은 끝에 /로 안끝나는게 맞는듯
 const products = axios.create({
 	baseURL: 'http://localhost:3000/products'
 })
