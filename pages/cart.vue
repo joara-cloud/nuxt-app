@@ -14,16 +14,27 @@
         </li>
       </ul>
     </div>
-    <div class="extra-panel">
-      <button>구매하기123</button>
+    <div class="text-right">
+      <v-btn color="primary">
+        구매하기
+      </v-btn>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  asyncData({store}) {
-    store.dispatch('fetchCartItems')
+  // asyncData 자체가 비동기를 호출하고 결과까지 반환해줘야하기때문에 async await
+  async asyncData({ store }) { //  첫 번째 인자는 nuxt의 context (참고: https://nuxtjs.org/docs/internals-glossary/context/)
+    await store.dispatch('FETCH_CART_ITEMS')
+  },
+  data() {
+    return {
+      cartItems: []
+    }
+  },
+  created() {
+    this.cartItems = this.$store.state.cartItems;
   }
 }
 </script>
