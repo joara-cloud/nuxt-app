@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<h1>notfound</h1>
-	</div>
+  <div>
+    git test
+  </div>
 </template>
 
 <script>
