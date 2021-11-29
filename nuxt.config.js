@@ -75,7 +75,7 @@ export default {
   },
 
   // server setup (포트 번호 지정하기)
-  server: {
-    port: 5000,
-  }
+  // server: {
+  //   port: 5000,
+  // }
 }
