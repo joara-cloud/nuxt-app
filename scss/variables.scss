@@ -1,0 +1,154 @@
+// vuetify 변수를 사용 가능
+//@import '~vuetify/src/styles/styles.sass';
+$color-pack: false;
+$body-font-family: 'Noto Sans KR', 'Roboto', sans-serif !default;
+$border-radius-root: 4px;
+$font-size-root: 62.5% !default;
+$font-size: 1.4rem !default;
+$line-height-root: 1.6 !default;
+$spacer: 2px !default;
+$grid-gutter: $spacer * 5 - 2 !default;
+$container-padding-x: $grid-gutter / 2 !default;
+
+// Button
+$btn-letter-spacing: 0;
+$btn-font-weight: 600;
+$btn-sizes: (
+  'x-small': 20,
+  'small': 28,
+  'default': 40,
+  'large': 50,
+);
+$btn-font-sizes: (
+  'x-small': 1.2rem,
+  'small': 1.2rem,
+  'default': 1.4rem,
+  'large': 1.6rem,
+  'x-large': 1.8rem,
+);
+$btn-font-weight: 400 !default;
+$btn-hover-opacity: 0.025 !default;
+$btn-text-transform: none !default;
+$fab-sizes: (
+  'x-small': 32,
+  'small': 40,
+  'default': 56,
+  'large': 64,
+  'x-large': 72,
+);
+/*
+$icon-size: 20px !default;
+$icon-size-dense: 20px !default;
+$icon-sizes: (
+  'small': (
+    'font-size': 12,
+    'height': 20,
+  ),
+  'default': (
+    'font-size': 12,
+    'height': 24,
+  ),
+);*/
+$btn-toggle-btn-height: 38px;
+// 칩
+$chip-line-height: 1.6;
+$chip-padding: 0 12px !default;
+$icon-sizes: (
+  'x-small': (
+    'font-size': 10,
+    'height': 16,
+  ),
+  'small': (
+    'font-size': 12,
+    'height': 24,
+  ),
+  'default': (
+    'font-size': 14,
+    'height': 32,
+  ),
+  'large': (
+    'font-size': 16,
+    'height': 54,
+  ),
+  'x-large': (
+    'font-size': 18,
+    'height': 66,
+  ),
+);
+$text-field-border-radius: 0 !default;
+$text-field-padding: 2px 0 !default;
+$text-field-label-top: 0;
+$text-field-label-active-transform: translateY(0px) scale(0) !default;
+$text-field-outlined-fieldset-top: 0;
+// 높이
+$text-field-filled-full-width-outlined-slot-min-height: 50px !default; //로그인
+$text-field-filled-full-width-outlined-single-line-slot-min-height: 36px !default; //일반
+$text-field-filled-full-width-outlined-dense-slot-min-height: 46px !default; //
+// 리스트
+$list-padding: 0 !default;
+$list-item-padding: 0 !default;
+$list-item-content-padding: 0;
+/* 상품 카드 */
+$card-text-font-size: 1.4rem;
+$card-text-line-height: 1.8rem;
+$card-title-font-size: 1.8rem;
+$card-subtitle-padding: 0;
+$card-title-adjacent-sibling-subtitle-margin-top: 0;
+$radio-margin-right: 8px !default;
+$list-padding: 0 !default;
+$list-item-action-margin: 0 !default;
+$list-item-title-font-size: 1.3rem;
+$list-item-dense-title-font-size: 1.3rem;
+$list-item-dense-title-font-weight: initial;
+$breadcrumbs-even-child-padding: 0 4px !default;
+$pagination-item-height: 30px !default;
+$pagination-item-min-width: 30px !default;
+$pagination-item-font-size: 0.75rem !default;
+$tab-font-size: 1.4rem;
+$tabs-bar-height: 42px !default;
+$subheader-item-single-height: 100% !default;
+$subheader-left-padding: 4px !default;
+$subheader-right-padding: 4px !default;
+$data-table-mobile-row-min-height: 40px !default;
+$data-table-regular-header-height: 40px !default;
+$data-table-regular-row-height: 40px !default;
+$data-table-expanded-content-box-shadow: inset 0px 0px 0px 0px
+    rgba(50, 50, 50, 0.75),
+  inset 0px 0px 0px 0px rgba(50, 50, 50, 0.75) !default;
+$data-table-regular-header-font-size: 1.4rem !default;
+$data-table-regular-row-font-size: 1.3rem !default;
+$date-picker-header-padding: 4px 40px !default;
+$expansion-panel-header-min-height: 40px !default;
+$expansion-panel-active-header-min-height: 40px !default;
+$expansion-panel-header-padding: 10px !default;
+$expansion-panel-content-padding: 4px !default;
+$stepper-elevation: 0 !default;
+$stepper-header-elevation: 0 !default;
+$stepper-header-height: auto !default;
+$stepper-step-padding: 10px !default;
+$time-picker-indicator-size: 30px !default;
+$time-picker-ampm-title-font-size: 13px !default;
+$time-picker-clock-padding: 40px !default;
+$time-picker-ampm-padding: 40px !default;
+$time-picker-title-btn-height: 40px !default;
+
+// 사용자 정의 변수
+// 여기에 매인컬러, 서브컬러 등의 변수를 설정하면 SCSS 어디에서도 사용할 수 있습니다.
+//////////////////////////////////////////////
+$color-main: #ff3322;
+
+$icon-size: 1.4rem;
+$color-primary: #000;
+$color-brand: #3879c5;
+$color-error: #ed4444;
+$font-color: rgba(74, 74, 74, 1);
+$input-height: 30px;
+$input-max-height: 30px;
+$percent-100: 100%;
+$line-color: #becbd9;
+@mixin borderType {
+  border-width: 1px;
+  border-style: solid;
+  border-color: $line-color;
+  border-radius: $border-radius-root;
+}

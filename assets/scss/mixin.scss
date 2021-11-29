@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "sass:meta";
+
+// example
+// @include webkit($transform: rotate(45deg));
+// @include webkit($transition: transform 1s);
+// @include webkit($transition: (top:1s, transform:1s, opacity:1s));
+@mixin webkit($args...){
+    @each $k, $v in meta.keywords($args){
+        @if(meta.type-of($v) == "string"){
+            #{$k}: #{$v};
+            -webkit-#{$k}: #{$v};
+        }@else if(meta.type-of($v) == "list"){
+            #{$k}: #{$v};
+            @if(index($v, "transform") == 1){
+                -webkit-#{$k}: -webkit-#{$v};
+            }@else{
+                -webkit-#{$k}: #{$v};
+            }
+        }@else if(meta.type-of($v) == "map"){
+            $s1 : "";
+            $s2 : "";
+            @each $v1, $v2 in $v{
+                $i: index($v, $v1 $v2);
+                $v3: $v1;
+                @if($v1 == "transform"){
+                    $v3 : "-webkit-" + $v1;
+                }
+                @if($i == 1){
+                    $s1 : $v1 + " " + $v2;
+                    $s2 : $v3 + " " + $v2;
+                }@else{
+                    $s1 : $s1 + ", " +$v1 + " " + $v2;
+                    $s2 : $s2 + ", " +$v3 + " " + $v2;
+                }
+            }
+            #{$k}:#{$s1};
+            -webkit-#{$k}:#{$s2};
+        }
+    }
+}
+
+@mixin imgSprite($type:common, $posi:0 0){
+    background:url(@/assets/images/#{$type}.png) no-repeat #{$posi};
+    background-size:1000px auto;
+}
+
+@mixin textOverflow {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+}

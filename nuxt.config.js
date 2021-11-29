@@ -8,7 +8,11 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { 
+        hid: 'description', 
+        name: 'description', 
+        content: '아라의 쇼핑앱' 
+      },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -18,7 +22,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/scss/_app.scss'
+    '@/assets/scss/_index.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -41,9 +45,15 @@ export default {
     // With options
     ['@nuxtjs/vuetify', { /* module options */ }]
   ],
+  vuetify: {
+    customVariables: ['~/scss/variables.scss'],
+    // treeShake: true,
+    // defaultAssets: false,
+  },
 
   styleResources: { 
-    less: '~/assets/scss/*.scss' 
+    // less: '~/assets/scss/*.scss' 
+    scss: ['~/assets/scss/_index.scss']
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
