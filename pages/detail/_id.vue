@@ -51,14 +51,14 @@
 import {fetchProductById, createCartItem} from '@/api/index.js'
 
 export default {
+  head: {
+    title: 'product detail'
+  },
 	async asyncData({ params }) {
 		const response = await fetchProductById(params.id);
 		const product = response.data;
 		return {product}
-
-
 	},
-  
   methods: {
     async addToCart() {
       try {
